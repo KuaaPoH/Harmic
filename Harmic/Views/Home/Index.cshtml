@@ -1,4 +1,11 @@
-﻿        <!-- Begin Slider Area -->
+﻿﻿@{
+    List<TbProductCategory> productCategories = ViewBag.productCategories;
+    List<TbProduct> productNew = ViewBag.productNew;
+
+}
+
+
+        <!-- Begin Slider Area -->
 <div class="slider-area">
 
     <!-- Main Slider -->
@@ -142,46 +149,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav product-tab-nav pb-10" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="active" id="all-items-tab" data-bs-toggle="tab" href="#all-items" role="tab" aria-controls="all-items" aria-selected="true">
-                            <div class="product-tab-icon">
-                                <img src="~/assets/images/product/icon/1.png" alt="Product Icon">
-                            </div>
-                            All Items
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a id="fresh-fruits-tab" data-bs-toggle="tab" href="#fresh-fruits" role="tab" aria-controls="fresh-fruits" aria-selected="false">
-                            <div class="product-tab-icon">
-                                <img src="~/assets/images/product/icon/2.png" alt="Product Icon">
-                            </div>
-                            Fresh Fruits
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a id="vegetable-tab" data-bs-toggle="tab" href="#vegetable" role="tab" aria-controls="vegetable" aria-selected="false">
-                            <div class="product-tab-icon">
-                                <img src="~/assets/images/product/icon/3.png" alt="Product Icon">
-                            </div>
-                            Vegetable
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a id="fish-meat-tab" data-bs-toggle="tab" href="#fish-meat" role="tab" aria-controls="fish-meat" aria-selected="false">
-                            <div class="product-tab-icon">
-                                <img src="~/assets/images/product/icon/4.png" alt="Product Icon">
-                            </div>
-                            Fish & Meat
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a id="wheat-tab" data-bs-toggle="tab" href="#wheat" role="tab" aria-controls="wheat" aria-selected="false">
-                            <div class="product-tab-icon">
-                                <img src="~/assets/images/product/icon/5.png" alt="Product Icon">
-                            </div>
-                            Wheat
-                        </a>
-                    </li>
+                    
+                    @foreach (var item in productCategories.Where(i => (bool)i.IsActive))
+                    {
+                        <li class="nav-item" role="presentation">
+                            <a id="@item.Alias-tab" data-bs-toggle="tab" href="#@item.Alias" role="tab" aria-controls="fresh-fruits" aria-selected="true">
+                                <div class="product-tab-icon">
+                                    <img src="~/assets/images/product/icon/@item.Icon" alt="Product Icon">
+                                </div>
+                                @item.Title
+                            </a>
+                        </li>
+                    }
+                  
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="all-items" role="tabpanel" aria-labelledby="all-items-tab">
