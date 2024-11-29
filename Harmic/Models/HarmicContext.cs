@@ -290,6 +290,7 @@ public partial class HarmicContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(50);
+            entity.Property(e => e.ProductReviewId).ValueGeneratedOnAdd();
 
             entity.HasOne(d => d.Product).WithMany(p => p.TbProductReviews)
                 .HasForeignKey(d => d.ProductId)
