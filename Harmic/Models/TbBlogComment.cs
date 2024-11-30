@@ -22,4 +22,6 @@ public partial class TbBlogComment
     public bool IsActive { get; set; }
 
     public virtual TbBlog? Blog { get; set; }
+
+    public string? Image { get; set; }
 }
