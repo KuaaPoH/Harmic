@@ -1,0 +1,80 @@
+﻿@model Harmic.Models.TbMenu
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Xóa Menu</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">General Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Xoá Menu</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Tiêu Đề: </label>
+                                @Html.DisplayFor(model => model.Title)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Alias: </label>
+                                @Html.DisplayFor(model => model.Alias)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mô Tả: </label>
+                                @Html.DisplayFor(model => model.Description)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mức: </label>
+                                @Html.DisplayFor(model => model.Levels)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Vị trí: </label>
+                                @Html.DisplayFor(model => model.Position)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Menu Cha: </label>
+                                @Html.DisplayFor(model => model.ParentId)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Hiện: </label>
+                                @Html.DisplayFor(model => model.IsActive)
+                            </div>
+                            <form asp-action="Delete">
+                                <input type="hidden" asp-for="MenuId" />
+                                <input type="submit" value="Xoá" class="btn btn-danger" /> |
+                                <a asp-action="Index" class="btn btn-primary">Quay lại</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
