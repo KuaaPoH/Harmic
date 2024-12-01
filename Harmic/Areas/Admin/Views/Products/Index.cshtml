@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Harmic.Models.TbProduct>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản Lý Sản Phẩm</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Simple Tables</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><a asp-action="Create">Thêm Mới</a></h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Danh mục</th>
+                                        <th>Ảnh</th>
+                                        <th>Giá</th>
+                                        <th>Giá Giảm</th>
+                                        <th>Số Lượng</th>
+                                        <th>SP Mới</th>
+                                        <th>Bán Chạy</th>
+                                        <th>Sao</th>
+                                        <th>Hiện thị</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int i = 1;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                            
+                                        <tr>
+                                            <td>@(i++)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.CategoryProduct.Title)</td>
+                                        <td><img src="~/assets/images/product/medium-size/@Html.DisplayFor(modelItem => item.Image)" width="50" , height="50" /></td>
+                                            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.PriceSale)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.IsNew)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.IsBestSeller)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Star)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary">Sửa</a> |
+                                                <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-info">Chi Tiết</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Xoá</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
