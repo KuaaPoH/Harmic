@@ -63,14 +63,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Image" class="control-label">Chọn Ảnh</label>
-                                    <div class="custom-file">
-                                        <input asp-for="Image" type="file" class="custom-file-input" id="ImageUpload">
-                                        <label class="custom-file-label" for="ImageUpload">Chọn tệp ảnh...</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <button type="button" class="btn btn-success" onclick="openDialog()">Choose a picture</button>
+                                        </div>
+                                        <input type="text" class="form-control" id="file_input" asp-for="Image" aria-describedby="button-addon2" />
                                     </div>
-                                    <small class="form-text text-muted">Chọn ảnh từ máy tính của bạn (định dạng JPG, PNG).</small>
                                     <span asp-validation-for="Image" class="text-danger"></span>
                                 </div>
-
                                 <div class="form-group">
                                     <label asp-for="Detail" class="control-label">Chi Tiết</label>
                                     <textarea asp-for="Detail" class="form-control"></textarea>
@@ -82,9 +82,9 @@
                                     <span asp-validation-for="Price" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Price" class="control-label">Giá Giảm</label>
-                                    <input asp-for="Price" class="form-control" />
-                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                    <label asp-for="PriceSale" class="control-label">Giá Giảm</label>
+                                    <input asp-for="PriceSale" class="form-control" />
+                                    <span asp-validation-for="PriceSale" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Quantity" class="control-label">Số Lượng</label>
@@ -93,8 +93,23 @@
                                 </div>
                                 <div class="form-group form-check">
                                     <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="IsNew" /> SP mới
+                                    </label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="IsBestSeller" /> Bán chạy
+                                    </label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
                                         <input class="form-check-input" asp-for="IsActive" /> Hiển Thị
                                     </label>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Star" class="control-label">Sao</label>
+                                    <input asp-for="Star" class="form-control" />
+                                    <span asp-validation-for="Star" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Sửa" class="btn btn-primary" />
@@ -108,3 +123,8 @@
         </div>
     </section>
 </div>
+
+@{
+    var summerNote = new Harmic.Areas.Admin.Models.SummerNote("#Detail");
+    <partial name="_SummerNote" model="summerNote" />
+}

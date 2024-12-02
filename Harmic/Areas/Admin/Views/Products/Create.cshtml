@@ -53,18 +53,17 @@
                                     <select asp-for="CategoryProductId" class="form-control" asp-items="ViewBag.CategoryProductId">
                                     <option value="0" selected>--[Chọn danh mục]--</option>
                                     </select>
-
-                                  
                                     <span asp-validation-for="CategoryProductId" class="text-danger"></span>
                                 </div>
                                
                                 <div class="form-group">
                                     <label asp-for="Image" class="control-label">Chọn Ảnh</label>
-                                    <div class="custom-file">
-                                        <input asp-for="Image" type="file" class="custom-file-input" id="ImageUpload">
-                                        <label class="custom-file-label" for="ImageUpload">Chọn tệp ảnh...</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <button type="button" class="btn btn-success" onclick="openDialog()">Chọn một ảnh</button>
+                                        </div>
+                                        <input type="text" class="form-control" id="file_input" asp-for="Image" aria-describedby="button-addon2" />
                                     </div>
-                                    <small class="form-text text-muted">Chọn ảnh từ máy tính của bạn (định dạng JPG).</small>
                                     <span asp-validation-for="Image" class="text-danger"></span>
                                 </div>
 
@@ -79,10 +78,10 @@
                                     <span asp-validation-for="Price" class="text-danger"></span>
                                 </div> 
                                 <div class="form-group">
-                                    <label asp-for="Price" class="control-label">Giá Giảm</label>
-                                    <input asp-for="Price" class="form-control" />
-                                    <span asp-validation-for="Price" class="text-danger"></span>
-                                </div>  
+                                    <label asp-for="PriceSale" class="control-label">Giá Giảm</label>
+                                    <input asp-for="PriceSale" class="form-control" />
+                                    <span asp-validation-for="PriceSale" class="text-danger"></span>
+                                </div>
                                 <div class="form-group">
                                     <label asp-for="Quantity" class="control-label">Số Lượng</label>
                                     <input asp-for="Quantity" class="form-control" />
@@ -90,9 +89,25 @@
                                 </div>
                                 <div class="form-group form-check">
                                     <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="IsNew" /> SP mới
+                                    </label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="IsBestSeller" /> Bán chạy
+                                    </label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
                                         <input class="form-check-input" asp-for="IsActive" /> Hiển Thị
                                     </label>
                                 </div>
+                                <div class="form-group">
+                                    <label asp-for="Star" class="control-label">Sao</label>
+                                    <input asp-for="Star" class="form-control" />
+                                    <span asp-validation-for="Star" class="text-danger"></span>
+                                </div>
+                              
 
                             </div>
                             <!-- /.card-body -->
@@ -107,3 +122,7 @@
         </div>
     </section>
 </div>
+@{
+    var summerNote = new Harmic.Areas.Admin.Models.SummerNote("#Detail");
+    <partial name="_SummerNote" model="summerNote" />
+}
